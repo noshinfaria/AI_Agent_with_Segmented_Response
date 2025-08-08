@@ -1,0 +1,7 @@
+openai 
+fastapi 
+sse-starlette 
+uvicorn
+python-dotenv
+nltk
+tiktoken

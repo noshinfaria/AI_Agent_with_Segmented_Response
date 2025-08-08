@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Streaming AI Chat</title>
+  <style>
+    body { font-family: Arial, sans-serif; margin: 20px; }
+    #output p { margin: 5px 0; }
+    #output { margin-top: 20px; }
+  </style>
+</head>
+<body>
+  <h1>Ask the AI</h1>
+
+  <form id="chat-form">
+    <input type="text" id="prompt-input" placeholder="Type your question..." style="width: 60%;" required>
+    <button type="submit">Send</button>
+  </form>
+
+  <div id="output"></div>
+
+  <script>
+    const form = document.getElementById('chat-form');
+    const input = document.getElementById('prompt-input');
+    const output = document.getElementById('output');
+    let eventSource = null;
+
+    form.addEventListener('submit', function(e) {
+      e.preventDefault();
+
+      const prompt = encodeURIComponent(input.value.trim());
+      if (!prompt) return;
+
+      // Clear previous output
+      output.innerHTML = '';
+
+      // Close previous EventSource if exists
+      if (eventSource) {
+        eventSource.close();
+      }
+
+      // Open new EventSource stream
+      eventSource = new EventSource(`http://localhost:8000/chat?prompt=${prompt}`);
+
+      eventSource.onmessage = function(event) {
+        const part = document.createElement('p');
+        part.textContent = event.data;
+        output.appendChild(part);
+      };
+
+      eventSource.onerror = function(err) {
+        console.error("EventSource failed:", err);
+        eventSource.close();
+      };
+
+      // Reset the input field
+      input.value = '';
+    });
+  </script>
+</body>
+</html>
