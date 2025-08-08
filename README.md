@@ -1,6 +1,20 @@
 ## Semantic Chunking for Topic Transitions
 This project uses OpenAI's GPT-4 to detect topic transitions in long texts and dynamically streams segmented output to the user using FastAPI and Server-Sent Events (SSE). It focuses on semantic chunking — breaking text only where the topic changes, not at every sentence.
 
+### File Structure
+```graphql
+AI_Agent_with_Segmented_Response/
+├── static/
+│   ├── openai_chunk.html       # Frontend UI for interacting with the AI agent for openai based chunking
+│   └── sentence_ending.html    # Frontend UI for interacting with the AI agent for sentence ending based    chunking
+├── .gitignore                  # Specifies files/folders to ignore in Git
+├── README.md                   # Project documentation and setup instructions
+├── env.example                 # Example environment config (to be copied as `.env`)
+├── openai_chunk.py             # FastAPI backend with GPT-4 chunking and streaming logic
+├── requirements.txt            # Project dependencies
+├── sentence_ending.py          # FastAPI backend with sentence ending based
+```
+
 ### Keypoints
 - Accepts prompt from the user.
 - Streams the response from GPT in real-time.
