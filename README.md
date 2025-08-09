@@ -45,10 +45,13 @@ AI_Agent_with_Segmented_Response/
 - Ideal for chat-like experiences where responsiveness is key.
 
 ## When to Use Each Mode
-Mode	Technology Used	Unit of Chunking	Pros	Cons	Best For
-OpenAI Semantic Chunking	OpenAI GPT-4 + FastAPI	Topic Segments	High-level semantic awareness, true topic shifts	More latency (needs batching + GPT calls)	Reports, research papers
-LangChain Paragraph-Based	LangChain + FastAPI	Paragraphs	Preserves natural paragraph flow, minimal delay	Less semantic filtering	Articles, blogs, storytelling
-LangChain Sentence-Based	LangChain + FastAPI	Sentences	Very fast, responsive	No topic-level awareness	Chatbots, live Q&A
+
+| Mode                          | Technology Used        | Unit of Chunking | Pros                                               | Cons                                      | Best For                           |
+|--------------------------------|------------------------|------------------|----------------------------------------------------|--------------------------------------------|-------------------------------------|
+| **OpenAI Semantic Chunking**   | OpenAI GPT-4 + FastAPI | Topic Segments   | High-level semantic awareness, true topic shifts  | More latency (needs batching + GPT calls)  | Reports, research papers            |
+| **LangChain Paragraph-Based**  | LangChain + FastAPI    | Paragraphs       | Preserves natural paragraph flow, minimal delay   | Less semantic filtering                    | Articles, blogs, storytelling       |
+| **LangChain Sentence-Based**   | LangChain + FastAPI    | Sentences        | Very fast, responsive                             | No topic-level awareness                   | Chatbots, live Q&A                   |
+
 
 
 ### Keypoints
