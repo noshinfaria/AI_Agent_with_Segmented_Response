@@ -5,3 +5,5 @@ uvicorn
 python-dotenv
 nltk
 tiktoken
+langchain_openai
+langchain
